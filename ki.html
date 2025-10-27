@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Univers des parfums- Parfums de Luxe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        } 
+        /* Navigation */
+        .notice-bar {
+            background: #1B3140;
+            color: #F7DA64;
+            text-align: center;
+            padding: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .notice-bar strong {
+            color: #F7DA64;
+        }
+
+        nav {
+            background: #1B3140;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #DEC435;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1B3140 0%, #28485D 100%);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #DEC435;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #DEC435;
+            color: #1B3140;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(222, 196, 53, 0.3);
+            background: #F7DA64;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #1B3140;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        /* Collections */
+        .collections {
+            background: #f9f9f9;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .collection-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 2px solid #f0f0f0;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+            border-color: #28485D;
+        }
+
+        .collection-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .collection-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .collection-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1B3140;
+        }
+
+        .collection-content p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Products */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid #f0f0f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: #28485D;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #D0021B;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1B3140;
+            min-height: 2.4rem;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            min-height: 2.7rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: #1B3140;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-price .before {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.1rem;
+            margin-right: 0.5rem;
+        }
+
+        .add-to-cart-btn {
+            display: block;
+            width: 100%;
+            padding: 0.9rem;
+            background: #1B3140;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #28485D;
+            transform: translateY(-2px);
+        }
+
+        /* Features */
+        .features {
+            background: #f9f9f9;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .feature-item {
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #1B3140;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: #1B3140;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            padding: 1rem 2.5rem;
+            background: #DEC435;
+            color: #1B3140;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background: #F7DA64;
+        }
+
+        /* Footer */
+        footer {
+            background: #1B3140;
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #DEC435;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #DEC435;
+        }
+
+        .footer-section p {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            font-size: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #DEC435;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #28485D;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        Livraison partout au maroc seulement <strong>35DH</strong>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Univers des parfums</div>
+            <ul class="nav-links">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#products">Parfums</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <span>🔍</span>
+                <span>❤️</span>
+                <span>🛒</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Élégance Raffinée</h1>
+        <p>Découvrez l'art de la parfumerie de luxe</p>
+        <a href="#products" class="cta-button">Explorez la Collection</a>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="collections" id="collections">
+        <h2 class="section-title">Collections Vedettes</h2>
+        <p class="section-subtitle">Des fragrances soigneusement sélectionnées pour chaque occasion</p>
+        <div class="collection-grid">
+            <div class="collection-card">
+                 <img src="https://midwestfragranceco.com/cdn/shop/collections/9.png?v=1740969974" alt="Essence Florale" style="width: 489px;;height:345px;float:right">
+                <div class="collection-content">
+                    <h2><font style="color:MediumVioletRed;"">Essence Florale</font></h2>
+                    <p>Délicate & Romantique</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="https://www.pointdevue.fr/storage/images/article_960/2023/10/11_BEAUTE-02_PDV3924GAwJgS2vwy.jpg" alt="Signature Boisée" style="width: 489px;;height:345px;float:right">
+                <div class="collection-content">
+                    <h2><font style="color: SaddleBrown;"">Signature Boisée</font></h2>
+                    <p>Audacieuse & Mystérieuse</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                 <img src="https://thumbs.dreamstime.com/b/rafra%C3%AEchissant-citrus-cucumber-detox-cocktail-un-verre-d-%C3%A9t%C3%A9-sain-et-brillant-paquet-de-vitamines-hydration-profitez-la-382079862.jpg" alt="Fraîcheur Citrus" style="width: 489px;;height:345px;float:right">
+                <div class="collection-content">
+                    <h2><font style="color:LimeGreen;"">Fraîcheur Citrus</font></h2>
+                    <p>Vibrante & Énergique</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Nos Parfums</h2>
+        <p class="section-subtitle">Parfums de luxe internationaux à prix accessible</p>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://kosmenia.ma/cdn/shop/products/dior-sauvage-elixir-parfum-a4_2048x.jpg?v=1658260278" alt="SAUVAGE ELIXIR" style="width: 355px;;height:330px;float:right">
+                    <span class="product-badge">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3>SAUVAGE ELIXIR</h3>
+                    <p class="product-description">Sauvage Elixir est un parfum intensément concentré qui allie la fraîcheur emblématique de Sauvage<br>
+                         à un cœur épicé, une lavande raffinée et des bois liquoreux, créant un sillage puissant, élégant et envoûtant.</p>
+                    <div class="product-price">2000 MAD</div>
+                    <a href="1.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                     <img src="https://marionnaud.ma/cdn/shop/products/GA_2022_EA-SWY-Intensely_Pack-with-Ingredients_1x1_RVB-3000_1080x.png?v=1709896668" alt="stronger with you" style="width: 355px;;height:330px;float:right">
+                     <span class="product-badge">Best Seller</span>
+                </div>
+                <div class="product-info">
+                    <h3>Stronger with you intensely</h3>
+                    <p class="product-description">Stronger with you intensely est une version plus vibrante du parfum<br>
+                         original, mêlant poivre rose, marron glacé, vanille et bois ambré pour un sillage chaud, audacieux et gourmand.</p>
+                    <div class="product-price">800 MAD</div>
+                    <a href="2.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://parfumerieluxofficiel.ma/wp-content/uploads/2024/10/10402155888670-1-1.jpg" alt="ONE MILLION" style="width: 355px;;height:330px;float:right">
+                </div>
+                <div class="product-info">
+                    <h3>ONE MILLION GOLD</h3>
+                    <p class="product-description">Million Gold de Rabanne, créé par Quentin Bisch en 2024, est un parfum boisé aromatique pour homme, alliant élégance et modernité.</p>
+                    <div class="product-price">1100 MAD</div>
+                    <a href="3.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src=" https://i.makeup.fr/a/at/atb2e78gfin2.jpg " alt="ONE MILLION" style="width: 355px;;height:330px;float:right">
+                </div>
+                <div class="product-info">
+                    <h3>EROS FLAME</h3>
+                    <p class="product-description">Eros Flame de Versace est un parfum boisé et épicé mêlant agrumes,<br>
+                         épices et notes chaudes de vanille et de bois pour une senteur à la fois intense et sensuelle.</p>
+                    <div class="product-price">
+                        <span class="before">1000 MAD</span>
+                        <span>900 MAD</span>
+                    </div>
+                    <a href="4.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src=" https://bogart-april-storage.omn.proximis.com/Imagestorage/imagesSynchro/0/0/f80adf6c96b45726fe5564432f004e0576795618_9ff9d778-30d0-4a40-9e69-front.jpeg" alt="ONE MILLION" style="width: 355px;;height:330px;float:right">
+                </div>
+                <div class="product-info">
+                    <h3>ACQUA DI GIO</h3>
+                    <p class="product-description">Acqua Di Giò Profondo est un parfum marin et aromatique alliant<br>
+                         mandarine, lavandin, romarin, cèdre et patchouli pour une senteur fraîche, intense et masculine.</p>
+                    <div class="product-price">
+                        <span class="before">999 MAD</span>
+                        <span>949 MAD</span>
+                    </div>
+                    <a href="5.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://cdn.youcan.shop/stores/2094dff3b9d0fdae64f9a98437a763d1/products/IQy6KOpy4ZRliTKnyfaGGvjO2H477dOTdwYpui9T.webp" alt="Creed aventus" style="width: 355px;;height:330px;float:right">
+                </div>
+                <div class="product-info">
+                    <h3>Creed aventus</h3>
+                    <p class="product-description">Creed aventus est un parfum fruité et boisé, mêlant bergamote,<br>
+                         ananas et musc pour une senteur noble, masculine et sophistiquée.</p>
+                    <div class="product-price">2000 MAD</div>
+                    <a href="6.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5d14e8bfa505890001205e37/1730476483204-4LN1HUTGMS8S4B3IP9LB/avis-nouveau-parfum-femme-la-vie-est-belle-elixir-lancome-revue-fragrance-pauuulette-blog-+%285%29.jpg" alt="LA VIE EST BELLE" style="width: 355px;;height:330px;float:right">
+                    <span class="product-badge">Best Seller</span>
+                </div>
+                <div class="product-info">
+                    <h3>LA VIE EST BELLE</h3>
+                    <p class="product-description">La Vie Est Belle de Lancôme (2012) est un parfum Floral Fruité<br>
+                         Gourmand pour femme, mêlant des notes fruitées, florales et gourmandes pour un mélange élégant et lumineux.</p>
+                    <div class="product-price">1500 MAD</div>
+                    <a href="7.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://waheteter.com/wp-content/uploads/2022/07/Paco-Rabanne-Invictus-Legend.jpg" alt="INVICTUS LEGEND" style="width: 355px;;height:330px;float:right">
+                </div>
+                <div class="product-info">
+                    <h3>INVICTUS LEGEND</h3>
+                    <p class="product-description">Invictus Legend de Paco Rabanne (2019) est un parfum Boisé Aromatique pour homme,<br>
+                         alliant fraîcheur marine, épices et chaleur boisée pour un caractère puissant et masculin.</p>
+                    <div class="product-price">
+                        <span class="before">1000 MAD</span>
+                        <span>920 MAD</span>
+                    </div>
+                    <a href="8.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_697280-MLA79482290013_092024-O.webp" alt="GOOD GIRL" style="width: 355px;;height:330px;float:right">
+                <div class="product-info">
+                    <h3>GOOD GIRL</h3>
+                    <p class="product-description">Good Girl de Carolina Herrera est un parfum sensuel et moderne pour<br>
+                         femme, mêlant notes florales et gourmandes pour refléter la dualité entre élégance et audace.</p>
+                    <div class="product-price">1600 MAD</div>
+                    <a href="9.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://suenos.ma/images/virtuemart/product/mo06.jpg" alt="INTENSE CAFÉ" style="width: 355px;;height:330px;float:right">
+                 <span class="product-badge">Nouveau</span>
+                <div class="product-info">
+                    <h3>INTENSE CAFÉ</h3>
+                    <p class="product-description">Intense Cafe de Montale est un parfum Oriental Vanillé unisexe,<br>
+                         mêlant notes fleuries, rose, café, vanille, musc blanc et ambre pour un parfum chaleureux et gourmand.</p>
+                    <div class="product-price">
+                        <span class="before">1300 MAD</span>
+                        <span>1149 MAD</span>
+                    </div>
+                    <a href="10.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://k-zone.dz/wp-content/uploads/2023/05/1624188538_87456080_2514383598877471_6951956699506802688_n.jpg" alt="TERRE D'HERMÈS" style="width: 355px;;height:330px;float:right">
+                <div class="product-info">
+                    <h3>TERRE D'HERMÈS</h3>
+                    <p class="product-description">Terre d'Hermès de Hermès est un parfum boisé et épicé pour homme,<br>
+                         mêlant fraîcheur d'agrumes et profondeur boisée, symbole d'élégance masculine.</p>
+                    <div class="product-price">1100 MAD</div>
+                    <a href="11.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://haytamparfumerie.com/cdn/shop/files/3614273863377-black-opium-le-parfum-50ml_alt3.jpg?v=1704845107&width=1445" alt="BLACK OPIUM" style="width: 355px;;height:330px;float:right">
+                 <span class="product-badge">Nouveau</span>
+                <div class="product-info">
+                    <h3>BLACK OPIUM</h3>
+                    <p class="product-description">Black Opium de Yves Saint Laurent est un parfum Oriental Vanillé pour femme,<br>
+                         alliant notes fruitées, café et vanille pour un mélange intense, gourmand et féminin</p>
+                    <div class="product-price">800 MAD</div>
+                    <a href="12.html" class="add-to-cart-btn">Acheter Maintenant</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features -->
+    <section class="features">
+        <h2 class="section-title">Pourquoi Nous Choisir</h2>
+        <p class="section-subtitle">L'excellence dans chaque détail</p>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🚚</div>
+                <h3>Livraison Gratuite</h3>
+                <p>Livraison à 35DH partout au Maroc</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">✨</div>
+                <h3>Qualité Premium</h3>
+                <p>Parfums haute qualité inspirés des grandes marques</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <h3>Paiement Sécurisé</h3>
+                <p>Transactions sûres et cryptées garanties</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💯</div>
+                <h3>Satisfaction Garantie</h3>
+                <p>Retours et échanges faciles sous 14 jours</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Rejoignez Notre Cercle Exclusif</h2>
+        <p>Soyez les premiers à découvrir les nouveaux parfums et recevez des offres spéciales</p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Entrez votre email" required>
+            <button type="submit" class="newsletter-btn">S'abonner</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Univers des parfums</h3>
+                <p>Des parfums de luxe à prix accessible. Qualité premium.</p>
+                <div class="social-icons">
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🎵</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Termes et Politiques</h3>
+                <ul>
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                    <li><a href="#">Retours & échanges</a></li>
+                    <li><a href="#">Politique de Confidentialité</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contactez-nous</h3>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Aide & FAQ</a></li>
+                    <li><a href="#">Méthodes de paiement</a></li>
+                    <li><a href="#">Livraison</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>À Propos</h3>
+                <ul>
+                    <li>📧 Univers des parfums@gmail.com </li>
+                    <li>📞 +212 XXX-XXXXXX</li>
+                    <li>📍 Marrakech, Maroc</li>
+                    <li>🕐 Lun-Sam: 9h-20h</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Univers des parfums. Created by Majid.</p>
+        </div>
+    </footer>
+</body>
+</html>
